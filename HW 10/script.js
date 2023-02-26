@@ -29,7 +29,7 @@ const ITCompany = {
 const vacancyList = ITCompany.vacancies;
 let newWorker = Object.create(ITCompany);
 newWorker.name = prompt("What is your name?");
-newWorker.position = prompt("Type in your job position");
+newWorker.position = prompt("Type in your job position").toLowerCase();
 newWorker.salary = +prompt("Type in your salary");
 
 newWorker.greeting = function () {
@@ -46,7 +46,8 @@ function reject() {
 
 function checkWorker(position, salary) {
   for (const item of vacancyList) {
-    if (position == Object.keys(item)) {
+    let companyPosition = Object.keys(item)[0].toLowerCase();
+    if (position === companyPosition) {
       const positionSalary = Object.values(item)[0];
       if (salary === positionSalary.salary) {
         return this.greeting();
