@@ -27,34 +27,39 @@ const ITCompany = {
 };
 
 const vacancyList = ITCompany.vacancies;
-let newWorker = Object.create(ITCompany);
-newWorker.name = prompt("What is your name?");
-newWorker.position = prompt("Type in your job position").toLowerCase();
-newWorker.salary = +prompt("Type in your salary");
+const userName = prompt("What is your name?");
+const userPosition = prompt("Type in your job position");
+const userSalary = +prompt("Type in your salary");
+let newWorker;
 
-newWorker.greeting = function () {
-  document.write(
-    `hello my name is ${this.name}, im ${this.position} in ${this.companyName}`
-  );
-};
+function greeting () {
+          document.write(
+            `hello my name is ${this.name}, im ${this.position} in ${this.companyName}`
+          );
+        };
 
-function reject() {
+function reject(name, position) {
   document.write(
-    `${this.name}, you has significant skills at ${this.position} but we hired another developer, let's keep contact!`
+    `${name}, you has significant skills at ${position} but we hired another developer, let's keep contact!`
   );
 }
 
-function checkWorker(position, salary) {
+function checkWorker(name, position, salary) {
   for (const item of vacancyList) {
-    let companyPosition = Object.keys(item)[0].toLowerCase();
-    if (position === companyPosition) {
+    const companyPosition = Object.keys(item)[0];
+    if (position.toLowerCase() === companyPosition.toLowerCase()) {
       const positionSalary = Object.values(item)[0];
       if (salary === positionSalary.salary) {
-        return this.greeting();
+        newWorker = Object.create(ITCompany);
+        newWorker.name = name;
+        newWorker.position = position;
+        newWorker.salary = salary;
+        newWorker.greeting = greeting;
+        return newWorker.greeting();
       }
     }
+    return reject(name, position);
   }
-  return reject.call(this);
 }
 
-checkWorker.call(newWorker, newWorker.position, newWorker.salary);
+checkWorker(userName, userPosition, userSalary);
