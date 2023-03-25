@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body class="body">
+    <form class="form" action="" method="get">
+        <h1>Оформить заказ</h1>
+        <p><label>Имя клиента:
+                <input type="text" name="client-name" id="client-name" required>
+            </label></p>
+        <p><label>Размер бургера:
+                <select name="burger-size" id="burger-size" required>
+                    <option value="SIZE_SMALL">маленький</option>
+                    <option value="SIZE_BIG">большой</option>
+                </select>
+            </label></p>
+        <p>Выбор начинки: <br>
+            <label for="cheese">
+                <input class="stuffing" type="radio" name="stuffing" id="cheese" value="STUFFING_CHEESE" required>с сыром
+            </label><br>
+            <label for="salad">
+                <input class="stuffing" type="radio" name="stuffing" id="salad" value="STUFFING_SALAD">с салатом
+            </label><br>
+            <label for="potato">
+                <input class="stuffing" type="radio" name="stuffing" id="potato" value="STUFFING_POTATO">с картошкой
+            </label>
+        </p>
+        <p>Выбор специй: <br>
+            <label>
+                <input class="topping" type="checkbox" name="topping" id="TOPPING_MAYO">с майонезом
+            </label><br>
+            <label>
+                <input class="topping" type="checkbox" name="topping" id="TOPPING_SAUCE">с соусом
+            </label><br>
+        </p>
+        <p>Сообщение к заказу:</p>
+        <textarea name="user-message" id="user-message" cols="40" rows="6" required></textarea>
+        <p class="buttons-wrap">
+            <button class="btn reset" type="reset">Сбросить</button>
+            <button class="btn submit" type="submit">Подтвердить</button>
+        </p>
+    </form>
+        <div class="order-wrap"></div>
+    <script src="script.js"></script>
+</body>
+
+</html>
