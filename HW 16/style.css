@@ -1,0 +1,55 @@
+.body {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    font-family: 'Open Sans', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    background: url('img/burger.jpg') #020202 no-repeat center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.form {
+    width: 40%;
+    padding: 20px;
+    margin: auto 0;
+    width: max-content;
+    background-color: #be2e26;
+    border-radius: 8px;
+    box-shadow: 0 0 20px 10px #020202;
+    color: #000000;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.buttons-wrap {
+    text-align: center;
+}
+
+.btn {
+    margin: 5px;
+    padding: 10px;
+    background-color: #7a1d18;
+    border: none;
+    border-radius: 6px;
+    color: #f5d2d2;
+    font: inherit;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.order-wrap {
+    margin: auto 0;
+    width: 40%;
+}
+
+.order-item {
+    width: 100%;
+    background-color: #7a1d18;
+    border-radius: 8px;
+    color: #f5d2d2;
+    padding: 20px;
+    box-shadow: 0 0 20px 10px #020202;
+    margin-bottom: 20px;
+}
