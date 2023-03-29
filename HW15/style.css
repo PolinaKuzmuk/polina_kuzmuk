@@ -1,0 +1,21 @@
+.body {
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    box-sizing: border-box;
+    margin: 0;
+    height: 100vmin;
+    font-size: 0;
+}
+
+.block {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    position: relative;
+    top: calc(50% - 50px);
+    left: calc(50% - 50px);
+    font-size: 24px;
+}
