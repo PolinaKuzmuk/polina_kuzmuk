@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HW 8</title>
+</head>
+
+<body>
+    <h1>HW 8. Functions and arrays</h1>
+    <ol>
+        <li id="task-1">
+            <h2>Task 1</h2>
+            <p>Дано масив з елементами різних типів. Створити функцію яка вираховує середнє арифметичне лише числових
+                елементів даного масиву.</p>
+            <p>Наприклад, </br>
+                array = [2, 3, '4', 'five', 6, null, undefined, { position: 2 }, 0];
+            </p>
+        </li>
+        <li id="task-2">
+            <h2>Task 2</h2>
+            <p>Написати функцію doMath(x, znak, y), яка отримує 3 аргументи: числа x і y, рядок znak. У змінній znak
+                може бути: +, -, *, /, %, ^ (ступінь ). Вивести результат математичної дії, вказаної в змінній znak.
+                Обидва числа і знак виходять від користувача.</p>
+            <p><label>Type in an X argument:
+                    <input type="text" id="x">
+                </label></p>
+            <p><label>Type in an arifmetical sign (+, -, *, /, %, ^):
+                    <input type="text" id="znak">
+                </label></p>
+            <p><label>Type in an Y argument:
+                    <input type="text" id="y">
+                </label></p>
+            <p><button type="button" id="btn-task-2">Get answer</button></p>
+        </li>
+        <li id="task-3">
+            <h2>Task 3</h2>
+            <p>Написати функцію заповнення даними користувача двомірного масиву. Довжину основного масиву і внутрішніх
+                масивів задає користувач. Значення всіх елементів всіх масивів задає користувач.</p>
+            <p><label>Type in the main array length (only once):
+                    <input type="number" id="main-length">
+                </label>
+            </p>
+            <p><label>Type in the subarray length (each time for each subarray):
+                    <input type="number" id="subarr-length">
+                </label>
+            </p>
+            <p><label>Type in subarray data (separated by commas, each time for each subarray):
+                    <input type="text" id="subarr-data" placeholder="1,2,3">
+                </label>
+                <button type="button" id="create-arr">Confirm</button>
+            </p>
+            <p>Я не знаю как вставить в HTML массив с квадратными скобками для подмассивов, так что лучше смотрите ответ в консоли)</p>
+        </li>
+        <li id="task-4">
+            <h2>Task 4</h2>
+            <p>Створити функцію, яка прибирає з рядка всі символи, які ми передали після другого аргумента. 'func("hello
+                world", 'l', 'd')' поверне нам "heo wor". Вихідний рядок та символи для видалення задає користувач.</p>
+            <p>Також забезпечити логіку, при котрій після першого елементу ми можемо передати будь яким аргументом
+                функцію, яка щось достать до нашого рядка, ГОЛОВНЕ щоб функція виконувалася після того як ми проведемо
+                попередні маніпуляції (тобто видалимо символи).</p>
+            <p>Можливо додавати будь яку логіку в цю кастомну функцію.</p>
+            <p>Приклад:</p>
+            <p>const formatter = (string) => string.toUpperCase()</p>
+            <p>func("hello world", 'l', 'd', 'o', 'h', formatter)</p>
+            <p>або</p>
+            <p>func("hello world", 'l', 'd', formatter, 'o', 'h') // тут output функції не має змінитися</p>
+            <p><label>Type in a string:
+                    <input type="text" id="user-string">
+                </label></p>
+            <p><label>Type in symbols and functions if you want (separated by commas without spaces). Symbols have to be wrapped in single quotes ('), functions without any quotes:
+                    <input type="text" id="user-symbols" placeholder="'l','o',formatter">
+                </label></p>
+            <p><button type="button" id="btn-task-4">Try it</button></p>
+        </li>
+    </ol>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
