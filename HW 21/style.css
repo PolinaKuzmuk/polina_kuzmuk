@@ -191,7 +191,7 @@ input {
     padding: 10px 20px;
 }
 
-.empty-cart {
+.empty {
     display: none;
     text-align: center;
     margin-top: 30px;
@@ -209,6 +209,10 @@ input {
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 30px;
+}
+
+.orders {
+    display: none;
 }
 
 .title {
