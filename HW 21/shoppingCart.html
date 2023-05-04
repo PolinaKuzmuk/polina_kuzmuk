@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Shopping cart</title>
+</head>
+
+<body class="body">
+    <header class="header">
+        <a class="logo" href="index.html">
+            <img src="img/logo.png" width="50" height="50" alt="logo">
+        </a>
+        <nav>
+            <span class="greeting">Hi, <a class="log log-in" href="account.html"></a></span>
+            <a class="shopping-cart-link" href="login.html">
+                <img src="img/shopping-cart.png" width="30" height="30" alt="shopping cart">
+                <div class="shopping-cart-item">0</div>
+            </a>
+            <a class="log log-out" href="index.html">Log out</a>
+        </nav>
+    </header>
+    <main class="main">
+        <p class="empty-cart">Your shopping cart is empty</p>
+        <div class="cart_wrapper">
+            <div class="items-list">
+                <p class="title">Items in Shopping Cart</p>
+                <table class="table">
+                    <tr>
+                        <th colspan="2">Item description</th>
+                        <th>Price</th>
+                        <th>Sale</tth>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                        <th>Action</th>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <p class="title">My Order Summary</p>
+                <div class="summary">
+                    <p>Order total</p>
+                    <p class="totalNumber"></p>
+                </div>
+                <button class="btn complete-order" type="button">Complete order</button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>

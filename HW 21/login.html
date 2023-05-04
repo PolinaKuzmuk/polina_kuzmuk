@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Registration</title>
+</head>
+
+<body>
+
+    <body class="body">
+        <header class="header">
+            <a class="logo" href="index.html">
+                <img src="img/logo.png" width="50" height="50" alt="logo">
+            </a>
+            <nav>
+                <span class="greeting">Hi, <a class="log log-in" href="login.html">Log in</a></span>
+                <a class="shopping-cart-link" href="login.html">
+                    <img src="img/shopping-cart.png" width="30" height="30" alt="shopping cart">
+                    <div class="shopping-cart-item">0</div>
+                </a>
+                <a class="log log-out" href="index.html">Log out</a>
+            </nav>
+        </header>
+        <main class="main">
+            <div class="container container__grid">
+                <form class="sign-in">
+                    <h2 class="login-title">Secure Sign In</h2>
+                    <p class="login-subtitle">For current customers</p>
+                    <p class="error invalid-email">Invalid email.</p>
+                    <p class="error invalid-password">Invalid password.</p>
+                    <input type="email" name="email" placeholder="Email Address"><br>
+                    <input type="password" name="password" placeholder="Password" autocomplete="on"><br>
+                    <button class="btn btn__sign-in" type="submit">Sign in</button>
+                </form>
+                <form class="registration">
+                    <h2 class="login-title">Quick registration</h2>
+                    <p class="login-subtitle">For new customers</p>
+                    <p class="error invalid-email">User with email <span class="email"></span> already exist!</p>
+                    <p class="error invalid-password">Password not matches!</p>
+                    <input type="text" name="full-name" placeholder="Full name" required><br>
+                    <input type="email" name="email" placeholder="Email Address" required><br>
+                    <input type="password" name="password" placeholder="Password" autocomplete="on" required><br>
+                    <input type="password" name="verify-password" placeholder="Verify password" autocomplete="on" required><br>
+                    <button class="btn btn__register" type="submit">Create account</button>
+                </form>
+            </div>
+        </main>
+        <script src="script.js"></script>
+    </body>
+</body>
+
+</html>

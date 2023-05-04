@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Account</title>
+</head>
+<body class="body">
+    <header class="header">
+        <a class="logo" href="index.html">
+            <img src="img/logo.png" width="50" height="50" alt="logo">
+        </a>
+        <nav>
+            <span class="greeting">Hi, <a class="log log-in" href="account.html"></a></span>
+            <a class="shopping-cart-link" href="login.html">
+                <img src="img/shopping-cart.png" width="30" height="30" alt="shopping cart">
+                <div class="shopping-cart-item">0</div>
+            </a>
+            <a class="log log-out" href="index.html">Log out</a>
+        </nav>
+    </header>
+    <main class="main">
+        <div class="account_wrapper">
+            <div class="orders">
+                <p class="title">Ordered Items</p>
+                <table class="table">
+                    <tr>
+                        <th colspan="2">Item description</th>
+                        <th>Price</th>
+                        <th>Sale</tth>
+                        <th>Quantity</th>
+                        <th>Total</th>
+                    </tr>
+                </table>
+            </div>
+            <div class="user-info">
+                <p class="title">My Info</p>
+                <div class="name">
+                    <p>Name:</p><p class="user-name"></p>
+                </div>
+                <div class="email">
+                    <p>Email:</p><p class="user-email"></p>
+                </div>
+                <button class="btn delete-account" type="button">Delete account</button>
+            </div>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
