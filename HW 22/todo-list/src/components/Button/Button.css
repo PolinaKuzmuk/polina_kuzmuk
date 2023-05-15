@@ -1,0 +1,14 @@
+.btn {
+    box-sizing: border-box;
+    padding: 5px 15px;
+    margin: 5px;
+    background-color: #4772eb;
+    border: none;
+    border-radius: 3px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.del-btn {
+    background-color: #bb4d50;
+}

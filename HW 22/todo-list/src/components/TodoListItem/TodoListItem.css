@@ -1,0 +1,7 @@
+.itemStatus {
+    box-sizing: border-box;
+    padding: 5px 15px;
+    margin: 5px;
+    border-radius: 3px;
+    color: #ffffff;
+}
