@@ -9,9 +9,9 @@ const TodoList = ({ todos, deleteTodo, updateTodoStatus, updateAll, editTodo, sa
                 item={item}
                 key={item.id}
                 deleteTodo={deleteTodo}
-                updateTodoStatus = {updateTodoStatus}
-                editTodo = {editTodo}
-                saveTodo = {saveTodo}
+                updateTodoStatus={updateTodoStatus}
+                editTodo={editTodo}
+                saveTodo={saveTodo}
             />
         )
     })

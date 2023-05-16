@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import AppHeader from './components/AppHeader/AppHeader';
+import Filter from './components/Filter/Filter';
 import TodoList from './components/TodoList/TodoList';
 import AddTodo from './components/AddTodo/AddTodo';
 import API from './services/api';
+import './App.css'
 
 const App = () => {
     const [data, setData] = useState({
@@ -10,7 +12,7 @@ const App = () => {
         listToRender: []
     });
 
-    const fetchTodos = () => API.getTodoList(setData).then(res => setData({ todos: res }));
+    const fetchTodos = () => API.getTodoList(setData).then(res => setData({ todos: res, listToRender: res }));
 
     useEffect(() => {
         fetchTodos();
@@ -45,11 +47,26 @@ const App = () => {
         })
     }
 
+    const showAll = () => {
+        fetchTodos()
+    }
+
+    const showPending = () => {
+        setData({ todos: data.todos, listToRender: data.todos.filter(el => el.completed === false) })
+    }
+
+    const showCompleted = () => {
+        setData({ todos: data.todos, listToRender: data.todos.filter(el => el.completed === true) })
+    }
+
     return (
-        <div>
+        <div className='wrap'>
             <AppHeader />
             <AddTodo addTodo={addTodo} />
-            <TodoList todos={data.todos}
+            <Filter showAll={showAll}
+                showPending={showPending}
+                showCompleted={showCompleted} />
+            <TodoList todos={data.listToRender}
                 deleteTodo={deleteTodo}
                 updateTodoStatus={updateTodoStatus}
                 updateAll={updateAll}
