@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>HW 9</title>
+</head>
+
+<body>
+    <h2>Дано:</h2>
+    <ul>
+        <li>const obj = {
+            <ul>
+                <li>x: 10,</li>
+                <li>y: 20,</li>
+                <li>inner: {
+                    <ul>
+                        <li>x: 20,</li>
+                        <li>z: 30</li>
+                    </ul>
+                    },
+                </li>
+            </ul>
+            <ul>
+                <li>foo2: {
+                    <ul>
+                        <li>k: 23,</li>
+                        <li>p: 13</li>
+                    </ul>
+                    }
+                </li>
+            </ul>
+            }
+        </li>
+    </ul>
+    <h2>Задача:</h2>
+    <p>Написати функцію convert(), яка приймає на вхід об'єкт. Об'єкт може містити вкладені об'єкти, наприклад як в
+        заданому об'єкті obj. Функція має повернути новий об'єкт, в якому властивості всіх вкладених об'єктів
+        перезапишуться в основний. Приклад результату функції для об'єкту obj:</p>
+    <ul>
+        <li>newObj = {
+            <ul>
+                <li>x: 20,</li>
+                <li>y: 20,</li>
+                <li>z: 30,</li>
+                <li>k: 23,</li>
+                <li>p: 13</li>
+            </ul>
+            }
+        </li>
+    </ul>
+    <h2>Answer:</h2>
+    <p id="answer"></p>
+    <script src="script.js"></script>
+</body>
+
+</html>
