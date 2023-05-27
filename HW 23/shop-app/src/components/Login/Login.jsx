@@ -3,11 +3,11 @@ import './Login.css';
 import FormSignIn from "../FormSignIn/FormSignIn";
 import FormRegistration from "../FormRegistration/FormRegistration";
 
-const Login = () => {
+const Login = ({addUser}) => {
     return (
         <main className="main">
             <div className="container container__grid">
-                <FormSignIn />
+                <FormSignIn addUser={addUser}/>
                 <FormRegistration/>
             </div>
         </main>

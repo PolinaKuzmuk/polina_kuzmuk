@@ -33,7 +33,7 @@ export default function FormRegistration() {
                     };
                     API.createUser(newUser).then(res => {
                         localStorage.setItem('user', JSON.stringify(newUser));
-                        navigate('/index');
+                        navigate('/');
                     });
                 } else if (findDuplicateUser.length > 0) {
                     setErrorEmail(true);

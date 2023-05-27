@@ -4,7 +4,7 @@ import "./FormSignIn.css";
 import API from "../../services/API";
 import { useNavigate } from "react-router-dom";
 
-export default function FormSignIn() {
+export default function FormSignIn({addUser}) {
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
     const [isErrorEmail, setErrorEmail] = useState(false);
@@ -23,7 +23,8 @@ export default function FormSignIn() {
                     if ((user.email.toLowerCase() === userEmail.toLowerCase()) && (user.password === userPassword)) {
                         API.changeUserStatus(user, true);
                         localStorage.setItem('user', JSON.stringify(user));
-                        navigate('/index');
+                        addUser(user);
+                        navigate('/');
                     }
                     else if ((user.email.toLowerCase() === userEmail.toLowerCase()) && (user.password !== userPassword)) {
                         setErrorPass(true);

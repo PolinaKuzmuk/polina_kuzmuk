@@ -23,7 +23,7 @@
 
 .log-out {
     cursor: pointer;
-    display: none;
+    /* display: none; */
     margin-left: 15px;
 }
 
