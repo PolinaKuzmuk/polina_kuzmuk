@@ -7,25 +7,30 @@ export default function ProductItem({ user, item, addUser, showItemsInCart }) {
     const newPrice = item.price - diskountSum;
     let inShoppingCart = false;
 
-    user.shoppingCart.forEach(el => {
-        if (el.id === item.id) {
-            inShoppingCart = true;
-        }
-    })
+    if (user.shoppingCart) {
+
+        user.shoppingCart.forEach(el => {
+            if (el.id === item.id) {
+                inShoppingCart = true;
+            }
+        })
+    }
 
     function addToCart(e) {
-        e.preventDefault();
-        user.shoppingCart.push({
-            id: `${item.id}`,
-            count: 1
-        });
-        API.changeUserData(user).then(() => {
-            localStorage.setItem('user', JSON.stringify(user));
-            addUser(user);
-            e.target.parentElement.classList.add("product__cart—in");
-            inShoppingCart = true;
-            showItemsInCart();
-        });
+        if (user.status) {
+            e.preventDefault();
+            user.shoppingCart.push({
+                id: `${item.id}`,
+                count: 1
+            });
+            API.changeUserData(user).then(() => {
+                localStorage.setItem('user', JSON.stringify(user));
+                addUser(user);
+                e.target.parentElement.classList.add("product__cart—in");
+                inShoppingCart = true;
+                showItemsInCart();
+            });
+        }
     }
 
     function removeFromCart(e) {
