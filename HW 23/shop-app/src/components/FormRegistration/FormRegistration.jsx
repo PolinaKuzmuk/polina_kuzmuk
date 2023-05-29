@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Button from "../common/Button/Button";
-import "./FormRegistration.css";
-import API from "../../services/API";
 import { useNavigate } from "react-router-dom";
+import Button from "../common/Button/Button";
+import API from "../../services/API";
+import "./FormRegistration.css";
 
-export default function FormRegistration() {
+export default function FormRegistration({addUser}) {
     const [fullname, setFullname] = useState('');
     const [userEmail, setUserEmail] = useState('');
     const [userPassword, setUserPassword] = useState('');
@@ -31,10 +31,17 @@ export default function FormRegistration() {
                         password: userPassword,
                         status: true
                     };
-                    API.createUser(newUser).then(res => {
-                        localStorage.setItem('user', JSON.stringify(newUser));
-                        navigate('/');
-                    });
+                    API.createUser(newUser).then(() => {
+                        API.getUsers().then(res => {
+                            res.filter(user => {
+                                if (user.email.toLowerCase() === userEmail.toLowerCase()) {
+                                    localStorage.setItem('user', JSON.stringify(user));
+                                    addUser(user);
+                                    navigate('/');
+                                }
+                            })
+                        })
+                    })
                 } else if (findDuplicateUser.length > 0) {
                     setErrorEmail(true);
                 }
@@ -56,3 +63,5 @@ export default function FormRegistration() {
         </form>
     )
 }
+
+

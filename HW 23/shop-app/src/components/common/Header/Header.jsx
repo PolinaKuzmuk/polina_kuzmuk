@@ -3,7 +3,7 @@ import API from '../../../services/API';
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
 
-const Header = ({ user, removeUser, showItemsInCart }) => {
+const Header = ({ user, removeUser }) => {
   const navigate = useNavigate();
 
   function logOut(e) {
@@ -32,7 +32,7 @@ const Header = ({ user, removeUser, showItemsInCart }) => {
         </span>
         <a className='shopping-cart-link' href={user.status ? '/shoppingCart' : 'login'}>
           <img src="./img/shopping-cart.png" width='30' height='30' alt='shopping cart' />
-          <div className='shopping-cart-item'>{user.shoppingCart ? showItemsInCart() : 0}</div>
+          <div className='shopping-cart-item'>{user.shoppingCart ?  user.shoppingCart.length : 0}</div>
         </a>
         <a className='log log-out' href='/' style={style} onClick={logOut}>Log out</a>
       </nav>
