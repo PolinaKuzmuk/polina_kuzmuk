@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Button from "../common/Button/Button";
+import CustomButton from "../common/Button/Button";
 import API from "../../services/API";
 import "./FormRegistration.css";
+import { FormControl, TextField, Typography } from "@mui/material";
 
-export default function FormRegistration({addUser}) {
-    const [fullname, setFullname] = useState('');
-    const [userEmail, setUserEmail] = useState('');
-    const [userPassword, setUserPassword] = useState('');
-    const [verifyPassword, setVerifyPassword] = useState('');
+export default function FormRegistration({ addUser }) {
+    const [fullname, setFullname] = useState(false);
+    const [userEmail, setUserEmail] = useState(false);
+    const [userPassword, setUserPassword] = useState(false);
+    const [verifyPassword, setVerifyPassword] = useState(false);
     const [isErrorEmail, setErrorEmail] = useState(false);
     const [isErrorPass, setErrorPass] = useState(false);
     const navigate = useNavigate();
@@ -49,19 +50,21 @@ export default function FormRegistration({addUser}) {
         }
     }
 
+    const style = {
+        'margin': '0 15px 15px 0'
+    }
+
     return (
-        <form className="registration">
-            <h2 className="login-title">Quick registration</h2>
-            <p className="login-subtitle">For new customers</p>
-            <p className={`error ${isErrorEmail ? 'active' : ''}`}>User with email {userEmail} already exist!</p>
-            <p className={`error ${isErrorPass ? 'active' : ''}`}>Password not matches!</p>
-            <input type="text" name="full-name" placeholder="Full name" value={fullname} onChange={e => setFullname(e.target.value)} required />
-            <input type="email" name="email" placeholder="Email Address" value={userEmail} onChange={e => setUserEmail(e.target.value)} required />
-            <input type="password" name="password" placeholder="Password" autoComplete="on" value={userPassword} onChange={e => setUserPassword(e.target.value)} required />
-            <input type="password" name="verify-password" placeholder="Verify password" autoComplete="on" value={verifyPassword} onChange={e => setVerifyPassword(e.target.value)} required />
-            <Button className="btn btn__register" type="submit" text="Create account" onClick={createUserAccount} />
-        </form>
+        <FormControl className="registration">
+            <Typography variant="h2" className="login-title" fontSize="2rem">Quick registration</Typography>
+            <Typography className="paragraph login-subtitle">For new customers</Typography>
+            <Typography className={`paragraph error ${isErrorEmail ? 'active' : ''}`}>User with email {userEmail} already exist!</Typography>
+            <Typography className={`paragraph error ${isErrorPass ? 'active' : ''}`}>Password not matches!</Typography>
+            <TextField style={style} size="small" type="text" name="full-name" placeholder="Full name" value={fullname || ''} onChange={e => setFullname(e.target.value)} required />
+            <TextField style={style} size="small" type="email" name="email" placeholder="Email Address" value={userEmail || ''} onChange={e => setUserEmail(e.target.value)} required />
+            <TextField style={style} size="small" type="password" name="password" placeholder="Password" value={userPassword || ''} onChange={e => setUserPassword(e.target.value)} required />
+            <TextField style={style} size="small" type="password" name="verify-password" placeholder="Verify password" value={verifyPassword || ''} onChange={e => setVerifyPassword(e.target.value)} required />
+            <CustomButton className="btn btn__register" type="submit" text="Create account" onClick={createUserAccount} />
+        </FormControl>
     )
 }
-
-

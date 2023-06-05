@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import Button from "../common/Button/Button";
-import "./FormSignIn.css";
-import API from "../../services/API";
 import { useNavigate } from "react-router-dom";
+import { FormControl, TextField, Typography } from "@mui/material";
+import CustomButton from "../common/Button/Button";
+import API from "../../services/API";
+import "./FormSignIn.css";
+import "../Login/Login.css";
 
-export default function FormSignIn({addUser}) {
-    const [userEmail, setUserEmail] = useState('');
-    const [userPassword, setUserPassword] = useState('');
+export default function FormSignIn({ addUser }) {
+    const [userEmail, setUserEmail] = useState(false);
+    const [userPassword, setUserPassword] = useState(false);
     const [isErrorEmail, setErrorEmail] = useState(false);
     const [isErrorPass, setErrorPass] = useState(false);
     const navigate = useNavigate();
@@ -39,15 +41,19 @@ export default function FormSignIn({addUser}) {
             })
     };
 
+    const style = {
+        'margin': '0 15px 15px 0'
+    }
+
     return (
-        <form className="sign-in">
-            <h2 className="login-title">Secure Sign In</h2>
-            <p className="login-subtitle">For current customers</p>
-            <p className={`error ${isErrorEmail ? 'active' : ''}`}>Invalid email.</p>
-            <p className={`error ${isErrorPass ? 'active' : ''}`}>Invalid password.</p>
-            <input type="email" name="email" placeholder="Email Address" value={userEmail} onChange={e => setUserEmail(e.target.value)} />
-            <input type="password" name="password" placeholder="Password" autoComplete="on" value={userPassword} onChange={e => setUserPassword(e.target.value)} />
-            <Button className="btn btn__sign-in" type="submit" text="Sign in" onClick={signInFunc} />
-        </form>
+        <FormControl className="sign-in">
+            <Typography variant="h2" className="login-title" fontSize="2rem">Secure Sign In</Typography>
+            <Typography className="paragraph login-subtitle">For current customers</Typography>
+            <Typography className={`paragraph error ${isErrorEmail ? 'active' : ''}`}>Invalid email.</Typography>
+            <Typography className={`paragraph error ${isErrorPass ? 'active' : ''}`}>Invalid password.</Typography>
+            <TextField style={style} size="small" type="email" name="email" placeholder="Email Address" value={userEmail || ""} onChange={e => setUserEmail(e.target.value)} />
+            <TextField style={style} size="small" type="password" name="password" placeholder="Password" value={userPassword  || ""} onChange={e => setUserPassword(e.target.value)} />
+            <CustomButton className="btn btn__sign-in" type="submit" text="Sign in" onClick={signInFunc} />
+        </FormControl>
     )
 }

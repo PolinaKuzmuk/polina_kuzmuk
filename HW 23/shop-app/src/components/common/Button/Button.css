@@ -8,3 +8,7 @@
     padding: 10px 30px;
     cursor: pointer;
 }
+
+.btn.css-173vi3y-MuiButtonBase-root-MuiButton-root:hover {
+     background-color: #b02f36;
+}

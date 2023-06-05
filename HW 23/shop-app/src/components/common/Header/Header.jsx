@@ -1,6 +1,8 @@
 import React from 'react';
 import API from '../../../services/API';
 import { useNavigate } from 'react-router-dom';
+import { AppBar, Box, Link, Toolbar } from "@mui/material";
+import Image from 'mui-image';
 import './Header.css';
 
 const Header = ({ user, removeUser }) => {
@@ -20,23 +22,27 @@ const Header = ({ user, removeUser }) => {
     display: user.status ? "inline-block" : "none"
   }
 
+  const margin = {
+    'margin': '0 auto 0 0'
+  }
+
   return (
-    <header className='header'>
-      <a className='logo' href='/'>
-        <img src="./img/logo.png" width='50' height='50' alt='logo' />
-      </a>
-      <nav>
-        <span className='greeting'>Hi,
-          <a className='log log-in' href={user.status ? '/account' : '/login'}>
-            {user.status ? ` ${user.name}` : 'Log In'}</a>
-        </span>
-        <a className='shopping-cart-link' href={user.status ? '/shoppingCart' : 'login'}>
-          <img src="./img/shopping-cart.png" width='30' height='30' alt='shopping cart' />
-          <div className='shopping-cart-item'>{user.shoppingCart ?  user.shoppingCart.length : 0}</div>
-        </a>
-        <a className='log log-out' href='/' style={style} onClick={logOut}>Log out</a>
-      </nav>
-    </header>
+    <AppBar sx={{ 'position': 'relative' }}>
+      <Toolbar className='header'>
+        <Link className='logo' href='/' sx={margin}>
+          <Image src="./img/logo.png" width={50} height={50} alt='logo' />
+        </Link>
+        <Box component="span" className='greeting'>Hi,
+          <Link className='log log-in' href='/account'>
+            {user.status ? ` ${user.name}` : 'Log In'}</Link>
+        </Box>
+        <Link className='shopping-cart-link' href='/cart'>
+          <Image src="./img/shopping-cart.png" width={30} height={30} alt='shopping cart' />
+          <Box className='shopping-cart-item'>{user.shoppingCart ? user.shoppingCart.length : 0}</Box>
+        </Link>
+        <Link className='log log-out' sx={{ml: 2}} href='/' style={style} onClick={logOut}>Log out</Link>
+      </Toolbar>
+    </AppBar>
   )
 }
 
