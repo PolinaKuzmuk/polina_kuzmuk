@@ -3,12 +3,12 @@ import { ProductSection } from "../ProductSection/ProductSection";
 import "./Index.css";
 import { Box } from "@mui/material";
 
-export default function Home({user, products, addUser, removeItemFromCart}) {
+export default function Home() {
     return (
         <Box className="main">
             <Box className="container">
                 <Box id="categoriesContainer">
-                    <ProductSection user={user} products={products} addUser={addUser} removeItemFromCart={removeItemFromCart}/>
+                    <ProductSection />
                 </Box>
             </Box>
         </Box>

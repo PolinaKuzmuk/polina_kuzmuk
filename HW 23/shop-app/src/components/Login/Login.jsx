@@ -4,12 +4,12 @@ import FormSignIn from "../FormSignIn/FormSignIn";
 import FormRegistration from "../FormRegistration/FormRegistration";
 import { Box } from "@mui/material";
 
-const Login = ({ addUser }) => {
+const Login = () => {
     return (
         <main className="main">
             <Box className="container container__grid">
-                <FormSignIn addUser={addUser} />
-                <FormRegistration addUser={addUser} />
+                <FormSignIn />
+                <FormRegistration />
             </Box>
         </main>
     )

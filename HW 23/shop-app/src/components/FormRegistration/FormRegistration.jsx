@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../common/Button/Button";
 import API from "../../services/API";
+import { setActiveUSer } from "../../store/userActions";
 import "./FormRegistration.css";
 import { FormControl, TextField, Typography } from "@mui/material";
+import { useDispatch } from "react-redux";
 
-export default function FormRegistration({ addUser }) {
+export default function FormRegistration() {
     const [fullname, setFullname] = useState(false);
     const [userEmail, setUserEmail] = useState(false);
     const [userPassword, setUserPassword] = useState(false);
@@ -13,6 +15,7 @@ export default function FormRegistration({ addUser }) {
     const [isErrorEmail, setErrorEmail] = useState(false);
     const [isErrorPass, setErrorPass] = useState(false);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     function createUserAccount(e) {
         e.preventDefault();
@@ -36,8 +39,8 @@ export default function FormRegistration({ addUser }) {
                         API.getUsers().then(res => {
                             res.filter(user => {
                                 if (user.email.toLowerCase() === userEmail.toLowerCase()) {
-                                    localStorage.setItem('user', JSON.stringify(user));
-                                    addUser(user);
+                                    setActiveUSer(dispatch, user);
+                                    localStorage.setItem('user', user.id);
                                     navigate('/');
                                 }
                             })

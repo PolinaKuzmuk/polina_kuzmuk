@@ -8,13 +8,19 @@ export default {
         )
     },
 
+    getActiveUser: (id) => {
+        return (
+            fetch(`${BASE_URL}users/${id}`)
+                .then(res => res.json())
+        )
+    },
+
     changeUserStatus: (user, status) => {
-        user.status = status;
         return (
             fetch(`${BASE_URL}users/${user.id}`, {
                 method: 'PUT',
                 headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify(user),
+                body: JSON.stringify({...user, status: status}),
             })
         )
     },
@@ -25,7 +31,7 @@ export default {
                 method: 'PUT',
                 headers: { 'Content-type': 'application/json' },
                 body: JSON.stringify(user),
-            })
+            }).then(res => res.json())
         )
     },
 
