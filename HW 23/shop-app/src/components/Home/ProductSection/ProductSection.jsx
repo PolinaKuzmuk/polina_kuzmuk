@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 
 export const ProductSection = () => {
     const productList = useSelector(store => store.products);
+
     return (
         Object.keys(productList).map(key => {
             return (

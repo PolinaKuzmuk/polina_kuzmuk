@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductSection } from "../ProductSection/ProductSection";
+import { ProductSection } from "./ProductSection/ProductSection";
 import "./Index.css";
 import { Box } from "@mui/material";
 

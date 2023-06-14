@@ -1,7 +1,7 @@
 import React from "react";
 import './Login.css';
-import FormSignIn from "../FormSignIn/FormSignIn";
-import FormRegistration from "../FormRegistration/FormRegistration";
+import FormSignIn from "./FormSignIn/FormSignIn";
+import FormRegistration from "./FormRegistration/FormRegistration";
 import { Box } from "@mui/material";
 
 const Login = () => {

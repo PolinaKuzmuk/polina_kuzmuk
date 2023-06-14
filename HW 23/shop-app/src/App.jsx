@@ -5,20 +5,18 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Box from '@mui/material/Box';
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
-import { getProductsList } from "./store/userActions";
+import { getProductsListThunk } from "./store/products/productsActions";
 import { store } from "./store/store";
 import { useDispatch, Provider } from "react-redux";
 import './App.css';
+import Cart from "./components/Cart/Cart";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    async function fetchData() {
-      await getProductsList(dispatch);
-    }
-    fetchData();
-  }, []);
+    dispatch(getProductsListThunk())
+  }, [])
 
   return (
     <Routes>
@@ -36,7 +34,10 @@ const App = () => {
       } />
       <Route path="/cart" element={
         <PrivateRoute>
-          <h1>Here is your shopping cart</h1>
+          < Box className="body" >
+            <Header />
+            <Cart />
+          </Box>
         </PrivateRoute>
       } />
       <Route path="/account" element={
@@ -47,7 +48,6 @@ const App = () => {
     </Routes>
   )
 }
-
 
 const AppWrapper = () => {
   return (

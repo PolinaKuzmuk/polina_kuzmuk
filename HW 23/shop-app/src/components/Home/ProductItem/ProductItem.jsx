@@ -1,7 +1,6 @@
 import React from "react";
-import API from "../../services/API";
 import "./ProductItem.css";
-import { updateActiveUser } from "../../store/userActions";
+import { updateActiveUserThunk } from "../../../store/user/userActions";
 import { Box, Link, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import Image from 'mui-image';
@@ -34,11 +33,11 @@ export default function ProductItem({ item }) {
                     count: 1
                 }]
             }
-            API.changeUserData(updatedUser).then((res) => {
-                updateActiveUser(dispatch, res);
-                e.target.parentElement.classList.add("product__cart—in");
-                inShoppingCart = true;
-            })
+            dispatch(updateActiveUserThunk(updatedUser))
+                .then(() => {
+                    e.target.parentElement.classList.add("product__cart—in");
+                    inShoppingCart = true;
+                })
         } else {
             navigate("/login");
         }
@@ -51,11 +50,11 @@ export default function ProductItem({ item }) {
                 const updatedUser = {
                     ...user, shoppingCart: [...user.shoppingCart.filter(item => item !== el)]
                 }
-                API.changeUserData(updatedUser).then((res) => {
-                    updateActiveUser(dispatch, res);
-                    e.target.parentElement.classList.remove("product__cart—in");
-                    inShoppingCart = false;
-                });
+                dispatch(updateActiveUserThunk(updatedUser))
+                    .then(() => {
+                        e.target.parentElement.classList.remove("product__cart—in");
+                        inShoppingCart = false;
+                    })
             }
         })
     }

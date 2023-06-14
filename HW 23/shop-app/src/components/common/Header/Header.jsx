@@ -1,9 +1,8 @@
 import React from 'react';
-import API from '../../../services/API';
 import { useNavigate } from 'react-router-dom';
 import { AppBar, Box, Link, Toolbar } from "@mui/material";
 import { useDispatch, useSelector } from 'react-redux';
-import { removeActiveUser } from '../../../store/userActions';
+import { removeActiveUserThunk } from '../../../store/user/userActions';
 import Image from 'mui-image';
 import './Header.css';
 
@@ -12,13 +11,21 @@ const Header = () => {
   const dispatch = useDispatch();
   let user = useSelector(store => store.user);
 
-  function logOut(e) {
+  const itemsInCart = () => {
+    if (user.shoppingCart.length > 0) {
+      return user.shoppingCart.reduce((acc, item) => acc + Number(item.count), 0)
+    } else {
+      return 0
+    }
+  }
+
+  async function logOut(e) {
     e.preventDefault();
-    API.changeUserStatus(user, false).then(() => {
-      removeActiveUser(dispatch);
-      localStorage.removeItem('user');
-      navigate('/');
-    })
+    dispatch(removeActiveUserThunk(user))
+      .then(() => {
+        localStorage.removeItem('user');
+        navigate('/');
+      })
   }
 
   const style = {
@@ -41,7 +48,7 @@ const Header = () => {
         </Box>
         <Link className='shopping-cart-link' href='/cart'>
           <Image src="./img/shopping-cart.png" width={30} height={30} alt='shopping cart' />
-          <Box className='shopping-cart-item'>{user.status ? user.shoppingCart.length : 0}</Box>
+          <Box className='shopping-cart-item'>{user.status ? itemsInCart() : 0}</Box>
         </Link>
         <Link className='log log-out' sx={{ ml: 2 }} href='/' style={style} onClick={logOut}>Log out</Link>
       </Toolbar>

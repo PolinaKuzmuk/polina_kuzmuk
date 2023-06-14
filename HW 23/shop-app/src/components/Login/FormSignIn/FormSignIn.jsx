@@ -2,12 +2,12 @@ import { Formik, Field, Form } from 'formik';
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Typography } from "@mui/material";
-import CustomButton from "../common/Button/Button";
-import API from "../../services/API";
+import CustomButton from "../../common/Button/Button";
+import API from "../../../services/API";
 import "./FormSignIn.css";
-import "../Login/Login.css";
+import "../Login.css";
 import { useDispatch } from "react-redux";
-import { setActiveUSer } from "../../store/userActions";
+import { setActiveUSerThunk } from "../../../store/user/userActions";
 
 export default function FormSignIn() {
     const [isErrorEmail, setErrorEmail] = useState(false);
@@ -27,11 +27,11 @@ export default function FormSignIn() {
         API.getUsers().then(res => {
             res.filter(user => {
                 if ((user.email.toLowerCase() === values.email.toLowerCase()) && (user.password === values.password)) {
-                    API.changeUserStatus(user, true).then(() => {
-                        localStorage.setItem('user', user.id);
-                        setActiveUSer(dispatch, { ...user, status: true });
-                        navigate('/');
-                    });
+                    dispatch(setActiveUSerThunk({ ...user, status: true }))
+                        .then(() => {
+                            localStorage.setItem('user', user.id);
+                            navigate('/');
+                        })
                 }
                 else if ((user.email.toLowerCase() === values.email.toLowerCase()) && (user.password !== values.password)) {
                     setErrorPass(true);

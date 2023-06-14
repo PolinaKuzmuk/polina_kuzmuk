@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../common/Button/Button";
-import API from "../../services/API";
-import { setActiveUSer } from "../../store/userActions";
+import CustomButton from "../../common/Button/Button";
+import API from "../../../services/API";
+import { setActiveUSerThunk } from "../../../store/user/userActions";
 import "./FormRegistration.css";
 import { Formik, Field, Form } from 'formik';
 import { Box, Typography } from "@mui/material";
@@ -37,9 +37,11 @@ export default function FormRegistration() {
                         API.getUsers().then(res => {
                             res.filter(user => {
                                 if (user.email.toLowerCase() === values.email.toLowerCase()) {
-                                    setActiveUSer(dispatch, user);
-                                    localStorage.setItem('user', user.id);
-                                    navigate('/');
+                                    dispatch(setActiveUSerThunk(user))
+                                        .then(() => {
+                                            localStorage.setItem('user', user.id);
+                                            navigate('/');
+                                        })
                                 }
                             })
                         })
