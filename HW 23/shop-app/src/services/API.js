@@ -20,7 +20,7 @@ export default {
             fetch(`${BASE_URL}users/${user.id}`, {
                 method: 'PUT',
                 headers: { 'Content-type': 'application/json' },
-                body: JSON.stringify({...user, status: status}),
+                body: JSON.stringify({ ...user, status: status }),
             })
         )
     },
@@ -58,5 +58,11 @@ export default {
                     return acc;
                 }, {}));
             }))
+    },
+
+    deleteUser: (user) => {
+        return (fetch(`${BASE_URL}users/${user.id}`, {
+            method: 'DELETE',
+        }))
     }
 }

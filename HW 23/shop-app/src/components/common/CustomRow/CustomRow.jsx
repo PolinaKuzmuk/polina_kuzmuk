@@ -1,12 +1,27 @@
-import React from "react";
-import { updateActiveUserThunk } from "../../store/user/userActions";
+import { TableCell, TextField, TableRow, Typography } from "@mui/material";
+import Image from "mui-image";
 import { useDispatch, useSelector } from "react-redux";
-import { TableCell, TableRow, Typography, TextField } from "@mui/material";
-import Image from 'mui-image';
+import { updateActiveUserThunk } from "../../../store/user/userActions";
 
-export const CustomRow = ({ el, item, totalItemSum }) => {
-    const dispatch = useDispatch();
+export const CustomRow = ({ el, item, totalItemSum, isChanging }) => {
     const user = useSelector(store => store.user);
+    const dispatch = useDispatch();
+
+    function changeQuantity(isChanging) {
+        if (isChanging === true) {
+            return <TextField type="number" defaultValue={item.count} InputProps={{ inputProps: { min: 1 } }} onChange={updateCart} />
+        } else {
+            return <Typography className='paragraph'>{item.count}</Typography>
+        }
+    }
+
+    function deleteItem() {
+        const updatedCart = user.shoppingCart.filter(el => el.id !== item.id);
+        const updatedUser = {
+            ...user, shoppingCart: [...updatedCart]
+        }
+        dispatch(updateActiveUserThunk(updatedUser))
+    }
 
     function updateCart(e) {
         const updatedUser = {
@@ -24,12 +39,8 @@ export const CustomRow = ({ el, item, totalItemSum }) => {
         dispatch(updateActiveUserThunk(updatedUser))
     }
 
-    function deleteItem() {
-        const updatedCart = user.shoppingCart.filter(el => el.id !== item.id);
-        const updatedUser = {
-            ...user, shoppingCart: [...updatedCart]
-        }
-        dispatch(updateActiveUserThunk(updatedUser))
+    const style = {
+        display: isChanging ? 'table-cell' : 'none'
     }
 
     return (
@@ -45,10 +56,10 @@ export const CustomRow = ({ el, item, totalItemSum }) => {
                 </Typography>
             </TableCell>
             <TableCell>
-                <TextField type="number" defaultValue={item.count} InputProps={{ inputProps: { min: 1 } }} onChange={updateCart} />
+                {changeQuantity(isChanging)}
             </TableCell>
             <TableCell>{`$${totalItemSum}`}</TableCell>
-            <TableCell>
+            <TableCell style={style}>
                 <Image className="trash-img" src="./img/delete.png" height={30} width={30} alt="add-to-cart" onClick={deleteItem} />
             </TableCell>
         </TableRow>

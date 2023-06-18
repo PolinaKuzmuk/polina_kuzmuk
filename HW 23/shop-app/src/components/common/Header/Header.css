@@ -16,11 +16,6 @@
     margin-right: 15px;
 }
 
-.log {
-    color: #ffffff;
-    text-decoration: underline dashed;
-}
-
 .log-out {
     cursor: pointer;
     margin-left: 15px;

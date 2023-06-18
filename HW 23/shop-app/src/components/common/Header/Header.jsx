@@ -28,8 +28,17 @@ const Header = () => {
       })
   }
 
-  const style = {
-    display: user.status ? "inline-block" : "none"
+  const logOutstyle = {
+    display: user.status ? "inline-block" : "none",
+    color: '#ffffff',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    textDecoration: 'none'
+  }
+
+  const greetingStyle = {
+    color: '#ffffff',
+    textDecoration: 'underline dashed',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif'
   }
 
   const margin = {
@@ -42,15 +51,15 @@ const Header = () => {
         <Link className='logo' href='/' sx={margin}>
           <Image src="./img/logo.png" width={50} height={50} alt='logo' />
         </Link>
-        <Box component="span" className='greeting'>Hi,
-          <Link className='log log-in' href='/account'>
-            {user.status ? ` ${user.name}` : 'Log In'}</Link>
+        <Box component="span" className='greeting' style={greetingStyle}>Hi,
+          <Link className='log log-in' href='/account' style={greetingStyle}>
+            {user.status ? ` ${user.name}` : ' Log In'}</Link>
         </Box>
         <Link className='shopping-cart-link' href='/cart'>
           <Image src="./img/shopping-cart.png" width={30} height={30} alt='shopping cart' />
           <Box className='shopping-cart-item'>{user.status ? itemsInCart() : 0}</Box>
         </Link>
-        <Link className='log log-out' sx={{ ml: 2 }} href='/' style={style} onClick={logOut}>Log out</Link>
+        <Link className='log log-out' sx={{ ml: 2 }} href='/' style={logOutstyle} onClick={logOut}>Log out</Link>
       </Toolbar>
     </AppBar>
   )

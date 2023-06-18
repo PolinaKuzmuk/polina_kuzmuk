@@ -10,6 +10,7 @@ import { store } from "./store/store";
 import { useDispatch, Provider } from "react-redux";
 import './App.css';
 import Cart from "./components/Cart/Cart";
+import { Account } from "./components/Account/Account";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -42,7 +43,8 @@ const App = () => {
       } />
       <Route path="/account" element={
         <PrivateRoute>
-          <h1>Here is your account history</h1>
+          <Header />
+          <Account />
         </PrivateRoute>
       } />
     </Routes>

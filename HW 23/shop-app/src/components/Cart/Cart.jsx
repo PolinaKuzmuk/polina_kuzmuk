@@ -2,10 +2,11 @@ import React from "react";
 import { Box, Table, TableBody, TableCell, TableRow, Paper, TableHead, TableContainer, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import CustomButton from "../common/Button/Button";
-import './Cart.css';
-import { CustomRow } from "./CustomRow";
+import { CustomRow } from "../common/CustomRow/CustomRow";
 import { updateActiveUserThunk } from "../../store/user/userActions";
 import { useNavigate } from "react-router-dom";
+import { getTotalSumObj } from "../../utils/getTotalSumObj";
+import './Cart.css';
 
 
 const Cart = () => {
@@ -22,29 +23,7 @@ const Cart = () => {
     }
 
     if (shoppingCart.length > 0) {
-        const getItemTotalSum = (el, count) => {
-            const discountedPrice = el.sale ? (el.price - (el.price * el.salePercent / 100)) : el.price;
-            return (discountedPrice * count);
-        }
-
-        const getTotalSumObj = () => {
-            const totalSumObj = {};
-            let totalSum = 0;
-            shoppingCart.forEach(item => {
-                return Object.keys(productList).map(key => {
-                    return productList[key].map(el => {
-                        if (el.id === item.id) {
-                            const totalItemSum = getItemTotalSum(el, item.count);
-                            totalSumObj[el.id] = { totalItemSum, el };
-                            totalSum += totalItemSum;
-                        }
-                    });
-                })
-            })
-            return ({ totalSumObj, totalSum });
-        }
-
-        const totalSumObj = getTotalSumObj();
+        const totalSumObj = getTotalSumObj(shoppingCart, productList);
 
         return (
             <Box className="cart_wrapper main container">
@@ -66,7 +45,12 @@ const Cart = () => {
                                 {shoppingCart.map(item => {
                                     const elementData = totalSumObj.totalSumObj[item.id];
                                     if (elementData) {
-                                        return <CustomRow el={elementData.el} item={item} key={item.id} totalItemSum={elementData.totalItemSum} />
+                                        return <CustomRow
+                                            el={elementData.el}
+                                            item={item}
+                                            key={item.id}
+                                            totalItemSum={elementData.totalItemSum}
+                                            isChanging={true}/>
                                     }
                                 })}
                             </TableBody>

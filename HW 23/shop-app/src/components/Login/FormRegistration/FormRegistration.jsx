@@ -73,10 +73,10 @@ export default function FormRegistration() {
                 onSubmit={(values) => createUserAccount(values)}
             >
                 <Form className='registration'>
-                    <Field id="fullName" name="fullName" placeholder="Full name" />
-                    <Field id="email" name="email" placeholder="Email Address" />
-                    <Field id="password" name="password" placeholder="Password" />
-                    <Field id="verifyPassword" name="verifyPassword" placeholder="Verify password" />
+                    <Field id="fullName" name="fullName" placeholder="Full name" required/>
+                    <Field id="email" name="email" placeholder="Email Address" required/>
+                    <Field id="password" name="password" placeholder="Password" required/>
+                    <Field id="verifyPassword" name="verifyPassword" placeholder="Verify password" required/>
                     <CustomButton className="btn btn__register" type="submit" text="Create account" />
                 </Form>
             </Formik>

@@ -60,8 +60,8 @@ export default function FormSignIn() {
                 onSubmit={(values) => signInFunc(values)}
             >
                 <Form className='sign-in'>
-                    <Field id="email" name="email" placeholder="Email Address" />
-                    <Field id="password" name="password" placeholder="Password" />
+                    <Field id="email" name="email" placeholder="Email Address" required/>
+                    <Field id="password" name="password" placeholder="Password" required/>
                     <CustomButton className="btn btn__sign-in" type="submit" text="Sign in" />
                 </Form>
             </Formik>
