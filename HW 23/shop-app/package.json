@@ -22,8 +22,17 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
     "eject": "react-scripts eject"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    },
+    "projects": [
+      "src/jest.config.js"
+     ]
   },
   "eslintConfig": {
     "extends": [
@@ -44,6 +53,11 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "babel-jest": "^29.5.0",
+    "enzyme": "^3.11.0",
+    "jest": "^27.5.1",
     "react-router-dom": "^6.11.2"
   }
 }

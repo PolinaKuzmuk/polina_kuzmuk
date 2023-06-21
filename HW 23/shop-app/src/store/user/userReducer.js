@@ -4,6 +4,7 @@ import { SET_ACTIVE_USER, LOGOUT_ACTIVE_USER, UPDATE_ACTIVE_USER, DELETE_ACTIVE_
 const user = localStorage.getItem('user') ? await API.getActiveUser(localStorage.getItem('user')) : {};
 
 const USER_INITIAL_STATE = user
+// const USER_INITIAL_STATE = {}
 
 export const userReducer = (state = USER_INITIAL_STATE, { type, payload }) => {
     switch (type) {
