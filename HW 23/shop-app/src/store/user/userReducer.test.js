@@ -1,6 +1,5 @@
 import { SET_ACTIVE_USER, LOGOUT_ACTIVE_USER, UPDATE_ACTIVE_USER, DELETE_ACTIVE_USER } from "./userActions";
 import { userReducer } from "./userReducer";
-import API from "../../services/API";
 
 const user = {
     "orders": [

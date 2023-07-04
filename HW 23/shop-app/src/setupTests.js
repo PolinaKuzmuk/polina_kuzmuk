@@ -1,2 +1,2 @@
 import '@testing-library/jest-dom';
-import 'jest-enzyme';
+// import 'jest-enzyme';
