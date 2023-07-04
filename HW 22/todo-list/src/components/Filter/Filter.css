@@ -1,0 +1,11 @@
+.filter {
+    width: 100px;
+}
+
+.filter-pending {
+    background-color: #bb4d50;
+}
+
+.filter-completed {
+    background-color: #69a55e;
+}

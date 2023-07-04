@@ -1,0 +1,16 @@
+.account_wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 30px;
+}
+
+.name,
+.email {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-account {
+    display: block;
+    margin: 20px auto;
+}

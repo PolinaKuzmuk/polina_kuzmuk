@@ -1,0 +1,6 @@
+.registration {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #bab9ba;
+    padding-left: 15px;
+}
